@@ -1,5 +1,7 @@
 import React from 'react';
 import UserForm from './UserForm';
+import LanguageContext from '../contexts/LanguageContext';
+import ButtonContext from '../contexts/ButtonContext';
 
 class App extends React.Component {
   state = { language: 'english' };
@@ -24,7 +26,11 @@ class App extends React.Component {
           }}
           className="flag nl"
         />
-        <UserForm />
+        <LanguageContext.Provider value={this.state.language}>
+          <ButtonContext.Provider value="red">
+            <UserForm />
+          </ButtonContext.Provider>
+        </LanguageContext.Provider>
       </div>
     );
   }
